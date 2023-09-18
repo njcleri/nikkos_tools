@@ -1,0 +1,13 @@
+Metadata-Version: 2.1
+Name: nikkos-tools
+Version: 0.0.1
+Summary: Contains functions used for my research.
+Author: Nikko Cleri
+Author-email: <nikko.cleri@gmail.com>
+Keywords: python,first package
+Classifier: Development Status :: 3 - Alpha
+Classifier: Intended Audience :: Education
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: MacOS :: MacOS X
+
+Functions to make plots and perform data and statistical analyses.
