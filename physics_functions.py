@@ -5,6 +5,12 @@ from astropy.cosmology import WMAP9 as cosmo
 from astropy.units import cds
 cds.enable() 
 
+def redshift(rest_wavelength, redshift):
+    return rest_wavelength * (1 + redshift)
+
+def deredshift(observed_wavelength, redshift):
+    return observed_wavelength / (1 + redshift)
+
 def get_wavelength_from_ev(energy_eV):
     '''
     Takes photon energy in eV and returns corresponding wavelength in Angstroms
