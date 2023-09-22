@@ -1,4 +1,7 @@
 import pandas as pd
+from pathlib import Path
+BASE_PATH = Path(__file__).parent
+LINESDF_PATH = (BASE_PATH / "linesdf.csv").resolve()
 
 def load_lines(file):
     try:
@@ -7,7 +10,7 @@ def load_lines(file):
         print('FileNotFoundError: lines file not found')
 
 def display_lines_air(ax, vertical_anchor, lines_to_show=[], redshift=0, 
-                      wavelength_conversion=1, width=20, fontsize=15, show_text=False, lines_file='linesdf.csv'):
+                      wavelength_conversion=1, width=20, fontsize=15, show_text=False, lines_file=LINESDF_PATH):
     linesdf = load_lines(lines_file)
     
     for line in lines_to_show:
