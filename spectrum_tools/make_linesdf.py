@@ -53,7 +53,7 @@ shifts = {
         'SII_6731':-1
 		}
 
-def make_linesdf():
+def make_linesdf(save_path='./linesdf.csv'):
     for key in lines.keys():
         lines.get(key).append(shifts.get(key))
     linesdf = (pd.DataFrame(lines)
@@ -62,7 +62,7 @@ def make_linesdf():
             .rename(columns={'index':'line', 0:'wavelength_air', 1:'label', 2:'offset'})
             .assign(wavelength_vacuum = lambda x: pf.convert_wavelength_air_to_vacuum(x.wavelength_air))
             )
-    linesdf.to_csv('linesdf.csv', index=None)
+    linesdf.to_csv(save_path, index=None)
     
 if __name__ == '__main__':
     make_linesdf()
