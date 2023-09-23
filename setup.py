@@ -13,8 +13,9 @@ setup(
         author_email="<nikko.cleri@gmail.com>",
         description=DESCRIPTION,
         long_description=LONG_DESCRIPTION,
+        readme = "README.md",
         packages=find_packages(),
-        install_requires=['numpy', 'pandas', 'astropy', 'matplotlib', 'seaborn'],
+        install_requires=['numpy', 'pandas', 'astropy', 'matplotlib',],
         keywords=['python', 'utilities'],
         classifiers= [
             "Development Status :: 3 - Alpha",
