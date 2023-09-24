@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.0.2' 
+VERSION = '0.1.0' 
 DESCRIPTION = 'Contains functions used for my (Nikko Cleri\'s) research.'
 LONG_DESCRIPTION = 'Functions to make plots and perform data and statistical analyses.'
 
