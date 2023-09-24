@@ -15,6 +15,7 @@ def clean_cloudy_line_file(filename):
     
     return df
 
+
 def clean_cloudy_con_file(filename):
     '''
     My method for making cloudy continuum files which are run on a single grid

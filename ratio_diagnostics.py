@@ -6,24 +6,29 @@ def bpt_kewley01(logniiha):
 	'''    
 	return 0.61/(logniiha - 0.47) + 1.19    
 
+
 def bpt_kauffmann03(logniiha):
 	'''
 	Defining the BPT AGN/SF dividing line from Kauffmann 2003.
 	'''    
 	return 0.61/(logniiha - 0.05) + 1.3    
 
+
 def plot_bpt(ax):
     x = np.linspace(-2,0.04, 1000)
     ax.plot(x, bpt_kauffmann03(x), c='black', ls='-', lw=3, label='Kauffmann et al. 2003', zorder=-9)
     ax.plot(x, bpt_kewley01(x), c='black', ls=':', lw=3, label='Kewley et al. 2001', zorder=-9)
     
+    
 def plot_bpt_kewley01(ax):
     x = np.linspace(-2,0.46, 1000)
     ax.plot(x, bpt_kewley01(x), c='black', ls=':', lw=3, label='Kewley et al. 2001', zorder=-9)
     
+    
 def plot_bpt_kauffmann(ax):
     x = np.linspace(-2,0.04, 1000)
     ax.plot(x, bpt_kauffmann03(x), c='black', ls='-', lw=3, label='Kauffmann et al. 2003', zorder=-9)
+
 
 def vo87(logsiiha):
 	'''
@@ -32,10 +37,12 @@ def vo87(logsiiha):
 	'''    
 	return 0.48/(1.09*logsiiha - 0.10) + 1.3    
 
+
 def plot_vo87(ax):
     x = np.linspace(-2,0.09, 1000)
     ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'VO87', zorder=-9)
 	
+ 
 def unvo87(logsiiha):
 	'''
 	Defining the unVO87 AGN/SF dividing line from Backhaus et al. 2021.
@@ -43,9 +50,11 @@ def unvo87(logsiiha):
 	'''    
 	return 0.48/(1.09*logsiiha + 0.12) + 1.3
 
+
 def plot_unvo87(ax):
     x = np.linspace(-2,-0.12, 1000)
     ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'unVO87', zorder=-9)
+    
     
 def ohno(logneiiioii):
 	'''
@@ -54,9 +63,11 @@ def ohno(logneiiioii):
 	'''    
 	return 0.35/(2.8*logneiiioii - 0.8) + 0.64
 
+
 def plot_ohno(ax):
     xohno = np.linspace(-2,0.285, 1000)
     ax.plot(xohno, ohno(xohno), c='black', ls='-', lw=3, label='Backhaus et al. 2022 OHNO', zorder=-9)
+
 
 def mass_excitation_j11(logmass):
 	'''
@@ -77,6 +88,7 @@ def mass_excitation_j11(logmass):
 			y_lower[i] = np.NaN
 	
 	return y_upper, y_lower
+
 
 def mass_excitation_j14(logmass):
 	'''

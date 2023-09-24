@@ -1,6 +1,9 @@
 This package contains various modules with functions I (Nikko Cleri) use for my astronomical research. 
 This package is broken down as follows: 
 
+spectrum_tools: contains modules to display annotations and highlights of lines on spectra. 
+Also includes some rudimentary stacking methods. 
+
 physics_functions: contains various derivations of physical quantities (e.g., star formation rate, luminosity, etc.)
 as well as some useful unit conversions (air to vacuum wavelengths, photon energy to wavelength, etc.)
 

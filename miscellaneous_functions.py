@@ -12,6 +12,7 @@ def find_nearest(array, target_value):
     
     return array[idx]
 
+
 def generate_colors_from_colormap(cmap, ncolors):
     '''
     Generates a list of evenly spaced colors from a colormap
@@ -21,6 +22,7 @@ def generate_colors_from_colormap(cmap, ncolors):
     colors = np.linspace(0.1, 0.9, num=ncolors)
     
     return colormap(normalized_cmap(colors))
+
 
 def make_directories(path):
     '''

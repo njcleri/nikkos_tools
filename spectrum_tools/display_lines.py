@@ -11,6 +11,7 @@ def generate_default_axvspan_kwargs():
     }
     return axvspan_kwargs
 
+
 def generate_default_text_kwargs():
     text_kwargs = {
         'fontsize':15,
@@ -19,11 +20,13 @@ def generate_default_text_kwargs():
     }
     return text_kwargs
 
-def load_lines(file):
+
+def load_lines(file=LINESDF_PATH):
     try:
         return pd.read_csv(file)
     except FileNotFoundError:
         print('FileNotFoundError: lines file not found')
+
 
 def display_lines_air(ax, vertical_anchor, lines_to_show=[], redshift=0, 
                       wavelength_per_angstrom=1, width=20, show_text=False, lines_file=LINESDF_PATH, axvspan_kwargs={}, text_kwargs={}):
@@ -46,6 +49,7 @@ def display_lines_air(ax, vertical_anchor, lines_to_show=[], redshift=0,
         
         if show_text and (offset < 0):
             ax.text(wave_min, vertical_anchor, f'{label}', horizontalalignment='right', **text_kwargs)
+       
             
 def display_lines_air(ax, vertical_anchor, lines_to_show=[], redshift=0, 
                       wavelength_per_angstrom=1, width=20, show_text=False, lines_file=LINESDF_PATH, axvspan_kwargs={}, text_kwargs={}):

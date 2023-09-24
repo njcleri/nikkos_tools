@@ -1,9 +1,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec
-import numpy as np
 
 def plot_snr_hist(line, linelabel, dfs, labels, colors, save_path=False):
-    
     plt.figure(figsize=(10,10))
     for i, df in enumerate(dfs): 
         plt.hist(df[df.line == line]['snr_line'],  label=labels[i], color=colors[i], alpha=0.5)
@@ -12,6 +10,7 @@ def plot_snr_hist(line, linelabel, dfs, labels, colors, save_path=False):
     plt.legend()
     if save_path:
         plt.savefig(save_path)
+
 
 def plot_spectrum_minimalist(x, y, save_path=False):
     fig = plt.figure(figsize = (20 , 10))

@@ -70,6 +70,7 @@ def generate_new_line_data_vacuum(line, wavelength, label, offset):
         'offset':offset,
         'wavelength_vacuum': wavelength
         }])
+    return new_line
 
     
 def add_line_air(line,wavelength_air,label,offset):
