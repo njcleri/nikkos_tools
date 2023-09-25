@@ -1,40 +1,4 @@
 import numpy as np
-from astropy.io import fits
-from nikkos_tools import physics_functions as pf
-    
-    
-def get_prism_files(files):
-    return [file for file in files if 'PRISM' in file]
-
-
-def get_mgrating_files(files):
-    gratings = ['G140M', 'G235M', 'G395M']
-    return [file for file in files if any(grating in file for grating in gratings)]
-
-
-def get_g395m_files(files):
-    gratings = ['G395M']
-    return [file for file in files if any(grating in file for grating in gratings)]
-
-
-def import_ceers_fits_dict(filepath):
-    # Open the fits file
-    with fits.open(filepath) as hdu:
-
-        wave = hdu[1].data['WAVELENGTH']
-        flux = hdu[1].data['FLUX']
-        fluxerr = hdu[1].data['FLUX_ERROR']
-    return {'wavelength':wave, 'flux':flux, 'fluxerr':fluxerr}
-
-
-def import_ceers_fits_dict_rest_frame(filepath, z):
-    # Open the fits file
-    with fits.open(filepath) as hdu:
-
-        wave = pf.deredshift(hdu[1].data['WAVELENGTH'], z)
-        flux = hdu[1].data['FLUX']
-        fluxerr = hdu[1].data['FLUX_ERROR']
-    return {'wavelength':wave, 'flux':flux, 'fluxerr':fluxerr}
 
 
 def stack_spectra_without_weighting(wavelengths_list, fluxes_list):
