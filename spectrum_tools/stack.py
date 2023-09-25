@@ -1,13 +1,6 @@
 import numpy as np
 from astropy.io import fits
-import glob
 from nikkos_tools import physics_functions as pf
-
-NIRSpec_DATA = '/Users/alvis/Research/CEERS/NIRSpec_data/'
-
-def get_spec_files(id_mpt, data_parent_directory=NIRSpec_DATA):
-    spec_files = glob.glob(data_parent_directory + f'**/**/{id_mpt}/**_**{id_mpt}**_x1d.fits')
-    return spec_files
     
     
 def get_prism_files(files):
