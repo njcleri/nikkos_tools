@@ -3,6 +3,7 @@ from pathlib import Path
 BASE_PATH = Path(__file__).parent
 LINESDF_PATH = (BASE_PATH / "linesdf.csv").resolve()
 
+
 def generate_default_axvspan_kwargs():
     axvspan_kwargs = {
         'color':'k',

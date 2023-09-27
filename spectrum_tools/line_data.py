@@ -73,7 +73,7 @@ def generate_new_line_data_vacuum(line, wavelength, label, offset):
     return new_line
 
     
-def add_line_air(line,wavelength_air,label,offset):
+def add_line_air(line,wavelength_air,label,offset=1):
     new_line = generate_new_line_data_air(line,wavelength_air,label,offset)
     linesdf = load_lines()
     
@@ -86,7 +86,7 @@ def add_line_air(line,wavelength_air,label,offset):
     return linesdf
     
 
-def add_line_vacuum(line,wavelength_vacuum,label,offset):
+def add_line_vacuum(line,wavelength_vacuum,label,offset=1):
     new_line = generate_new_line_data_vacuum(line,wavelength_vacuum,label,offset)
     linesdf = load_lines()
     
