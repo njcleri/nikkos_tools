@@ -40,7 +40,7 @@ def vo87(logsiiha):
 
 def plot_vo87(ax):
     x = np.linspace(-2,0.09, 1000)
-    ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'VO87', zorder=-9)
+    ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'Veilleux & Osterbrock 1987', zorder=-9)
 	
  
 def unvo87(logsiiha):
