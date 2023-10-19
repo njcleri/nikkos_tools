@@ -12,8 +12,10 @@ def redshift(rest_wavelength, redshift):
 def deredshift(observed_wavelength, redshift):
     return observed_wavelength / (1 + redshift)
 
+
 def get_redshift_from_observed_wavelength(observed_wavelength, rest_wavelength):
     return observed_wavelength/rest_wavelength - 1
+
 
 def get_wavelength_from_ev(energy_eV):
     '''
