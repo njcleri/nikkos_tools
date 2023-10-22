@@ -66,7 +66,7 @@ def ohno(logneiiioii):
 
 def plot_ohno(ax):
     xohno = np.linspace(-2,0.285, 1000)
-    ax.plot(xohno, ohno(xohno), c='black', ls='-', lw=3, label='Backhaus et al. 2022 OHNO', zorder=-9)
+    ax.plot(xohno, ohno(xohno), c='black', ls='-', lw=3, label='Backhaus et al. 2022', zorder=-9)
 
 
 def mass_excitation_j11(logmass):
