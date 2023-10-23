@@ -32,7 +32,7 @@ def plot_bpt_kauffmann(ax):
 
 def vo87(logsiiha):
 	'''
-	Defining the unVO87 AGN/SF dividing line from Veilleux & Osterbrock 1987.
+	Defining the unVO87 AGN/SF dividing line from Trump et al. 2015.
 	Singularity at log(SII/Ha) = 0.0917
 	'''    
 	return 0.48/(1.09*logsiiha - 0.10) + 1.3    
@@ -40,7 +40,7 @@ def vo87(logsiiha):
 
 def plot_vo87(ax):
     x = np.linspace(-2,0.09, 1000)
-    ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'Veilleux & Osterbrock 1987', zorder=-9)
+    ax.plot(x, vo87(x), c='black', ls='-', lw=3, label= 'Trump et al. 2015', zorder=-9)
 	
  
 def unvo87(logsiiha):
