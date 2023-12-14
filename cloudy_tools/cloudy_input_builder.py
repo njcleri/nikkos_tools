@@ -128,8 +128,8 @@ class CloudyModel:
 def make_cloudy_executable(path, executable_name, cloudy_run_script_name='run_cloudy'):
     files = glob.glob(f'{path}/**.in')
     lines = [f'{cloudy_run_script_name} {file.rstrip(".in")}' for file in files]
-    np.savetxt(f'{executable_name}.exe', lines, fmt='%s')
-    os.chmod(f'{executable_name}.exe', stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH | stat.S_IRUSR | stat.S_IWUSR)
+    np.savetxt(f'{path}/{executable_name}.exe', lines, fmt='%s')
+    os.chmod(f'{path}/{executable_name}.exe', stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH | stat.S_IRUSR | stat.S_IWUSR)
         
         
         

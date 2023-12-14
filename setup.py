@@ -1,8 +1,8 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.1.0' 
-DESCRIPTION = 'Contains functions used for my (Nikko Cleri\'s) research.'
-LONG_DESCRIPTION = 'Functions to make plots and perform data and statistical analyses.'
+VERSION = '0.2.0' 
+DESCRIPTION = 'Code used for my (Nikko Cleri\'s) research.'
+LONG_DESCRIPTION = 'Methods to make plots, perform data and statistical analyses, analyze spectra, and perform photoionization modeling.'
 
 # Setting up
 setup(
@@ -15,7 +15,7 @@ setup(
         long_description=LONG_DESCRIPTION,
         readme = "README.md",
         packages=find_packages(),
-        install_requires=['numpy', 'pandas', 'astropy', 'matplotlib',],
+        install_requires=['numpy', 'pandas', 'astropy', 'matplotlib'],
         keywords=['python', 'utilities'],
         classifiers= [
             "Development Status :: 3 - Alpha",
