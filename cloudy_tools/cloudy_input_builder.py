@@ -38,6 +38,10 @@ class CloudyModel:
         """Cloudy will break if there is no hden set"""
         self.hden = hden
         self.set_model_parameter(f'hden {hden}')
+        
+    def set_ionization_parameter(self, logU):
+        self.logU = logU
+        self.set_model_parameter(f'ionization parameter {logU}')
     
     def set_geometry(self, geometry):
         self.geometry = geometry
@@ -68,7 +72,7 @@ class CloudyModel:
         self.set_model_parameter(f'save linelist column emergent absolute last units {self.wavelength_units} ".elin" "{self.linelist}"')
         
     def save_lines_intrinsic(self):
-        self.set_model_parameter(f'save linelist column intrinsic absolute last units {self.wavelength_units} ".elin" "{self.linelist}"')
+        self.set_model_parameter(f'save linelist column intrinsic absolute last units {self.wavelength_units} ".ilin" "{self.linelist}"')
         
     def save_all(self):
         self.save_overview()
@@ -76,14 +80,14 @@ class CloudyModel:
         self.save_lines_emergent()
         self.save_lines_intrinsic()
         
-    def build_default_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0):
+    def build_default_model(self, sed='NGC5548.sed', logU=-1, hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0):
         self.model = []
         self.set_sed(sed)
         self.set_hden(hden)
         self.set_abundance_pattern(abundance_pattern)
         self.set_grains(grains)
         self.set_metals_and_grains(gas_metallicity)
-        self.add_grid('ionization parameter', -4, -1, 0.25)
+        self.set_ionization_parameter(logU)
         self.set_model_parameter('iterate_to_convergence')
         self.save_all() 
         
@@ -122,7 +126,7 @@ class CloudyModel:
         if comment:
             np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_{comment}.in', self.model, fmt='%s')
         else:
-            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}.in', self.model, fmt='%s')
+            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}.in', self.model, fmt='%s')
             
    
 def make_cloudy_executable(path, executable_name, cloudy_run_script_name='run_cloudy'):
