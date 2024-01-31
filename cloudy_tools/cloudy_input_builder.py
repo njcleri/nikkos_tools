@@ -120,7 +120,7 @@ class CloudyModel:
         
     def make_cloudy_in_file(self, path='.', use_params=True, comment=None):
         if not use_params:
-            np.savetxt(f'{comment}.in', self.model, fmt='%s')
+            np.savetxt(f'{path}/{comment}.in', self.model, fmt='%s')
             return 
         
         if comment:
