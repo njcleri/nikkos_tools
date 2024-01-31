@@ -5,10 +5,10 @@ class CloudySlurm:
         self.slurm = []
         
     def set_parameter(self, parameter):
-        self.model.append(parameter)
+        self.slurm.append(parameter)
     
     def delete_parameter(self, parameter):
-        self.model = [item for item in self.model if item not in parameter]
+        self.slurm = [item for item in self.slurm if item not in parameter]
         
     def skip_line(self):
         self.set_parameter(f'')
@@ -44,8 +44,8 @@ class CloudySlurm:
     def set_cloudy_executable_line(self, cloudy_executable, cloudy_input):
         self.set_parameter(f'{cloudy_executable} {cloudy_input}')
         
-    def build_default_model(self, job_name='test_job', time='01:00:00', ntasks=1, ntasks_per_node=1, mem='2560M', output='test_job', cloudy_executable='run_cloudy', cloudy_input='test'):
-        self.model = []
+    def build_default_slurm(self, job_name='test_job', time='01:00:00', ntasks=1, ntasks_per_node=1, mem='2560M', output='test_job', cloudy_executable='run_cloudy', cloudy_input='test'):
+        self.slurm = []
         self.set_parameter(f'#!/bin/bash')
         self.set_parameter(f'##ENVIRONMENT SETTINGS; CHANGE WITH CAUTION')
         self.set_export()
@@ -67,6 +67,6 @@ class CloudySlurm:
             
     def make_slurm(self, path='.', name=None):
         if not name:
-            np.savetxt(f'{path}/{self.job_name}.slurm', self.model, fmt='%s')
+            np.savetxt(f'{path}/{self.job_name}.slurm', self.slurm, fmt='%s')
             return
-        np.savetxt(f'{path}/{name}.slurm', self.model, fmt='%s')
+        np.savetxt(f'{path}/{name}.slurm', self.slurm, fmt='%s')
