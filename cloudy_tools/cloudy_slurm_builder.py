@@ -10,6 +10,9 @@ class CloudySlurm:
     def delete_parameter(self, parameter):
         self.model = [item for item in self.model if item not in parameter]
         
+    def skip_line(self):
+        self.set_parameter(f'')
+        
     def set_export(self, export='NONE'):
         self.set_parameter(f'#SBATCH --export={export}')
     
@@ -48,6 +51,7 @@ class CloudySlurm:
         self.set_parameter(f'##ENVIRONMENT SETTINGS; CHANGE WITH CAUTION')
         self.set_export()
         self.set_user_env()
+        self.skip_line()
         self.set_parameter(f'##NECESSARY JOB SPECIFICATIONS')
         self.set_job_name(job_name)
         self.set_time(time)
@@ -55,6 +59,7 @@ class CloudySlurm:
         self.set_ntasks_per_node(ntasks_per_node)
         self.set_mem(mem)
         self.set_output(output)
+        self.skip_line()
         if type(cloudy_input) != list:
             self.set_cloudy_executable_line(cloudy_executable, cloudy_input)
             return
@@ -66,4 +71,3 @@ class CloudySlurm:
             np.savetxt(f'{path}/{self.job_name}.slurm', self.model, fmt='%s')
             return
         np.savetxt(f'{path}/{name}.slurm', self.model, fmt='%s')
-    
