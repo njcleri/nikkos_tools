@@ -1,6 +1,8 @@
 import numpy as np
 
 class CloudySlurm:
+    '''For making slurm files to run Cloudy on a cluster'''
+    
     def __init__(self) -> None:
         self.slurm = []
         
