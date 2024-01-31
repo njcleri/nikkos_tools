@@ -44,7 +44,6 @@ class CloudySlurm:
     def set_cloudy_executable_line(self, cloudy_executable, cloudy_input):
         self.set_parameter(f'{cloudy_executable} {cloudy_input}')
         
-
     def build_default_model(self, job_name='test_job', time='01:00:00', ntasks=1, ntasks_per_node=1, mem='2560M', output='test_job', cloudy_executable='run_cloudy', cloudy_input='test'):
         self.model = []
         self.set_parameter(f'#!/bin/bash')
