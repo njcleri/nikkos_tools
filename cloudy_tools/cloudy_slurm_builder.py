@@ -24,13 +24,13 @@ class CloudySlurm:
         self.set_parameter(f'#SBATCH --job-name={job_name}')
         
     def set_time(self, time):
-        self.set_parameter(f'#SBATCH --time=={time}')
+        self.set_parameter(f'#SBATCH --time={time}')
         
     def set_ntasks(self, ntasks):
-        self.set_parameter(f'#SBATCH --ntasks=={ntasks}')
+        self.set_parameter(f'#SBATCH --ntasks={ntasks}')
         
     def set_ntasks_per_node(self, ntasks_per_node):
-        self.set_parameter(f'#SBATCH --ntasks-per-node=={ntasks_per_node}')
+        self.set_parameter(f'#SBATCH --ntasks-per-node={ntasks_per_node}')
         
     def set_mem(self, mem):
         self.set_parameter(f'#SBATCH --mem={mem}')
