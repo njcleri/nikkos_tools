@@ -29,10 +29,11 @@ class CloudyModel:
         self.sed = sed
         self.set_model_parameter(f'table SED "{sed}"')
         
-    def set_star(self, sed, age, stellar_metallicity):
+    def set_star(self, sed, age, stellar_metallicity_solar):
         """Note: this requires intensity/luminosity/ionization parameter to be set or else Cloudy will break"""
-        self.sed = f'{sed}_{np.round(np.log10(age), decimals=2)}_{np.round(stellar_metallicity, decimals=2)}'
-        self.set_model_parameter(f'table star "{sed}" {age} {stellar_metallicity}')
+        self.sed = f'{sed}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=2)}'
+        z_absolute = np.log10(0.02*stellar_metallicity_solar)
+        self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
 
     def set_hden(self, hden):
         """Cloudy will break if there is no hden set"""
@@ -138,7 +139,7 @@ class CloudyModel:
             return 
         
         if comment:
-            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_{comment}.in', self.model, fmt='%s')
+            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}_{comment}.in', self.model, fmt='%s')
         else:
             np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}.in', self.model, fmt='%s')
             
