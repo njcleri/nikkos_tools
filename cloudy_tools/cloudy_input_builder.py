@@ -32,7 +32,7 @@ class CloudyModel:
     def set_star(self, sed, age, stellar_metallicity_solar):
         """Note: this requires intensity/luminosity/ionization parameter to be set or else Cloudy will break"""
         self.sed = f'{sed}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=2)}'
-        z_absolute = np.log10(0.02*stellar_metallicity_solar)
+        z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=2)
         self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
 
     def set_hden(self, hden):
