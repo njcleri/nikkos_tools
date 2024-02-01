@@ -104,7 +104,7 @@ class CloudyModel:
         self.set_model_parameter('iterate_to_convergence')
         self.save_all()   
         
-    def build_template_model_bpass(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, 
+    def build_template_model_bpass_gridU(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, 
                                   hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
         self.model = []
         self.set_star(sed, age, stellar_metallicity)
@@ -117,6 +117,20 @@ class CloudyModel:
         self.add_grid('ionization parameter', -4, -1, 0.25)
         self.set_model_parameter('iterate_to_convergence')
         self.save_all()   
+    
+    def build_template_model_bpass(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, logU=-4,
+                                  hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
+        self.model = []
+        self.set_star(sed, age, stellar_metallicity)
+        self.set_hden(hden)
+        self.set_abundance_pattern(abundance_pattern)
+        self.set_grains(grains)
+        self.set_metals_and_grains(gas_metallicity)
+        for element in element_scale_factor_dict.keys():
+            self.set_element_scale_factor(element, element_scale_factor_dict.get(element))
+        self.set_ionization_parameter(logU)
+        self.set_model_parameter('iterate_to_convergence')
+        self.save_all()  
         
     def make_cloudy_in_file(self, path='.', use_params=True, comment=None):
         if not use_params:
