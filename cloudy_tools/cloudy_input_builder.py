@@ -122,7 +122,7 @@ class CloudyModel:
     def build_template_model_bpass(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, logU=-4,
                                   hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
         self.model = []
-        self.set_star(sed, age, stellar_metallicity)
+        self.set_star(sed=sed, age=age, stellar_metallicity_solar=stellar_metallicity)
         self.set_hden(hden)
         self.set_abundance_pattern(abundance_pattern)
         self.set_grains(grains)
