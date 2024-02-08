@@ -6,7 +6,7 @@ import stat
 class CloudyModel:
     """For making Cloudy .in files"""
     
-    def __init__(self, linelist='LineList_HII_NJC.dat', wavelength_units='angstroms'):
+    def __init__(self, linelist='LineList_NJC.dat', wavelength_units='angstroms'):
         self.model = []
         self.linelist = linelist
         self.wavelength_units = wavelength_units
@@ -29,11 +29,16 @@ class CloudyModel:
         self.sed = sed
         self.set_model_parameter(f'table SED "{sed}"')
         
-    def set_star(self, sed, age, stellar_metallicity_solar):
+    def set_star(self, sed, age, stellar_metallicity_solar, log_age=True):
         """Note: this requires intensity/luminosity/ionization parameter to be set or else Cloudy will break"""
-        self.sed = f'{sed}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=2)}'
-        z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=2)
-        self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
+        if not log_age:
+            self.sed = f'{sed}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=4)}'
+            z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=4)
+            self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
+            return
+        self.sed = f'{sed}_age{age}_zstar{np.round(stellar_metallicity_solar, decimals=4)}'
+        z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=4)
+        self.set_model_parameter(f'table star "{sed}" {10**age} {z_absolute}')
 
     def set_hden(self, hden):
         """Cloudy will break if there is no hden set"""
