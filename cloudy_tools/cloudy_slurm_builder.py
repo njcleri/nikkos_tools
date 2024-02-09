@@ -38,7 +38,7 @@ class CloudySlurm:
         self.set_parameter(f'#SBATCH --mem={mem}')
         
     def set_output(self, output):
-        self.set_parameter(f'#SBATCH --output={output}.%j')
+        self.set_parameter(f'#SBATCH --output={output}_out.%j')
         
     def send_email_notification(self, email, type):
         self.set_parameter(f'#SBATCH --mail-type={type}')
