@@ -37,7 +37,7 @@ class CloudyModel:
             self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
             return
         self.sed = f'{sed}_age{age}_zstar{np.round(stellar_metallicity_solar, decimals=4)}'
-        z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=4)
+        z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=2)
         self.set_model_parameter(f'table star "{sed}" {10**age} {z_absolute}')
 
     def set_hden(self, hden):
