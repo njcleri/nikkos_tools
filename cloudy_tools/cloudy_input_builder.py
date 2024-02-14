@@ -144,9 +144,9 @@ class CloudyModel:
             return 
         
         if comment:
-            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}_{comment}.in', self.model, fmt='%s')
+            np.savetxt(f'{path}/sed{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}_{comment}.in', self.model, fmt='%s')
         else:
-            np.savetxt(f'{path}/{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}.in', self.model, fmt='%s')
+            np.savetxt(f'{path}/sed{self.sed}_hden{self.hden}_z{self.gas_metallicity}_logU{self.logU}.in', self.model, fmt='%s')
             
    
 def make_cloudy_executable(path, executable_name, cloudy_run_script_name='run_cloudy'):
