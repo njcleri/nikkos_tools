@@ -32,7 +32,7 @@ class CloudyModel:
     def set_star(self, sed, age, stellar_metallicity_solar, log_age=True):
         """Note: this requires intensity/luminosity/ionization parameter to be set or else Cloudy will break"""
         if not log_age:
-            self.sed = f'{sed}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=4)}'
+            self.sed = f'{sed.rstrip(".ascii")}_age{np.round(np.log10(age), decimals=2)}_zstar{np.round(stellar_metallicity_solar, decimals=4)}'
             z_absolute = np.round(np.log10(0.02*stellar_metallicity_solar), decimals=4)
             self.set_model_parameter(f'table star "{sed}" {age} {z_absolute}')
             return
@@ -97,7 +97,7 @@ class CloudyModel:
         self.set_model_parameter('iterate_to_convergence')
         self.save_all() 
         
-    def build_cleri_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
+    def build_cleri_agn_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
         self.model = []
         self.set_sed(sed)
         self.set_hden(hden)
@@ -106,8 +106,8 @@ class CloudyModel:
         self.set_metals_and_grains(gas_metallicity)
         for element in element_scale_factor_dict.keys():
             self.set_element_scale_factor(element, element_scale_factor_dict.get(element))
-        self.add_grid('ionization parameter', -4, -1, 0.25)
-        self.set_model_parameter('iterate_to_convergence')
+        # self.add_grid('ionization parameter', -4, -1, 0.25)
+        # self.set_model_parameter('iterate_to_convergence')
         self.save_all()   
         
     def build_template_model_bpass_gridU(self, sed="BPASSv2.2.1_imf135_300_burst_binary.ascii", age=1e7, stellar_metallicity=-1, 
