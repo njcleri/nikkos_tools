@@ -55,7 +55,7 @@ class CloudyModel:
         
     def set_abundance_pattern(self, abundance_pattern, grains='no grains'):
         self.abundance_pattern = abundance_pattern
-        self.set_model_parameter(f'abundance_pattern {abundance_pattern} {grains}')
+        self.set_model_parameter(f'abundances {abundance_pattern} {grains}')
         
     def set_grains(self, grains):
         self.grains = grains
