@@ -97,7 +97,7 @@ class CloudyModel:
         self.set_model_parameter('iterate_to_convergence')
         self.save_all() 
         
-    def build_cleri_agn_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}):
+    def build_cleri_agn_model(self, sed='NGC5548.sed', hden=2, abundance_pattern='gass10', grains='Orion', gas_metallicity=1.0, element_scale_factor_dict={}, logU=-4):
         self.model = []
         self.set_sed(sed)
         self.set_hden(hden)
@@ -106,6 +106,7 @@ class CloudyModel:
         self.set_metals_and_grains(gas_metallicity)
         for element in element_scale_factor_dict.keys():
             self.set_element_scale_factor(element, element_scale_factor_dict.get(element))
+        self.set_ionization_parameter(logU)
         # self.add_grid('ionization parameter', -4, -1, 0.25)
         # self.set_model_parameter('iterate_to_convergence')
         self.save_all()   
